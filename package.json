@@ -6,7 +6,7 @@
     "backend"
   ],
   "scripts": {
-    "build": "npm run build --workspace=frontend"
+    "build": "npm run build --prefix frontend"
   },
   "dependencies": {
     "mongodb": "^7.1.1"
