@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import quickturfLogoSrc from "../assets/logos/quickturf.svg";
-import stcLogoSrc from "../assets/logos/stc.svg";
+import stcLogoSrc from "../assets/logos/STC.svg";
 
 function useReveal(threshold = 0.15) {
   const ref = useRef(null);
