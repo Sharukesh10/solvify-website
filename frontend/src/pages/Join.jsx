@@ -74,7 +74,8 @@ export default function Join() {
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setStatus("loading");
     try {
-      const res = await axios.post("/api/leads", form);
+      const apiBase = import.meta.env.VITE_API_URL || "";
+      const res = await axios.post(`${apiBase}/api/leads`, form);
       setServerMsg(res.data.message);
       setStatus("success");
     } catch (err) {
