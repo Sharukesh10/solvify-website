@@ -1,8 +1,11 @@
 {
   "name": "solvify",
   "private": true,
+  "workspaces": [
+    "frontend"
+  ],
   "scripts": {
-    "build": "cd frontend && npm install && npm run build"
+    "build": "npm run build --workspace=frontend"
   },
   "dependencies": {
     "mongodb": "^7.1.1"
