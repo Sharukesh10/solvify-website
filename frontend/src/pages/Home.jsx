@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import * as THREE from "three";
 import WAVES from "vanta/dist/vanta.waves.min";
 import { Link } from "react-router-dom";
-import axios from "axios";
+
 import { Reveal, TextReveal } from "../components/Reveal";
 import Tilt from "react-parallax-tilt";
 import quickturfLogoSrc from "../assets/logos/quickturf.svg";
 import stcLogoSrc from "../assets/logos/stc.svg";
+import cseDsLogoSrc from "../assets/logos/CSE(DS).svg";
+import aicSkuLogoSrc from "../assets/logos/AIC SKU.svg";
 
 // Intersection observer hook
 function useReveal(threshold = 0.15) {
@@ -39,12 +42,12 @@ function Counter({ target, suffix = "" }) {
 }
 
 export default function Home() {
-  const [partnerMedia, setPartnerMedia] = useState([]);
   const [heroRef, heroVisible] = useReveal(0.1);
   const [aboutRef, aboutVisible] = useReveal(0.15);
   const [productsRef, productsVisible] = useReveal(0.15);
   const [howRef, howVisible] = useReveal(0.15);
   const [impactRef, impactVisible] = useReveal(0.15);
+  const [partnersRef, partnersVisible] = useReveal(0.15);
   const [ctaRef, ctaVisible] = useReveal(0.2);
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState(null);
@@ -97,9 +100,7 @@ export default function Home() {
     }
   }, [productsVantaEffect]);
 
-  useEffect(() => {
-    axios.get("/api/media?type=partner").then((r) => setPartnerMedia(r.data.data || [])).catch(() => { });
-  }, []);
+
 
   return (
     <main className="bg-brand-dark min-h-screen">
@@ -121,7 +122,7 @@ export default function Home() {
           <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-brand-green/20 to-transparent opacity-40" />
           <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-transparent via-brand-green/20 to-transparent opacity-40" />
           <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-green/10 to-transparent opacity-40" />
-          
+
           {/* Floating nodes */}
           <div className="absolute top-[25%] left-[15%] w-2 h-2 rounded-full bg-brand-green shadow-[0_0_15px_#1DB954] animate-float" style={{ animationDelay: '0ms' }} />
           <div className="absolute bottom-[25%] right-[18%] w-3 h-3 rounded-full bg-brand-green shadow-[0_0_20px_#1DB954] animate-float" style={{ animationDelay: '1000ms' }} />
@@ -166,11 +167,11 @@ export default function Home() {
               <span className="font-mono text-brand-green text-sm tracking-widest uppercase font-semibold">About Us</span>
             </div>
           </Reveal>
-          
+
           <TextReveal className="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] text-white leading-[1.1] mb-16 tracking-tight max-w-5xl">
             We simplify what's unnecessarily complex.
           </TextReveal>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-20">
             <div className="md:col-span-7">
               <Reveal delay={0.2}>
@@ -182,7 +183,7 @@ export default function Home() {
                 </p>
               </Reveal>
             </div>
-            
+
             <div className="md:col-span-5 flex flex-col gap-6">
               {[
                 { label: "Upcoming Products", value: 2, suffix: "+" },
@@ -293,19 +294,37 @@ export default function Home() {
             {[
               {
                 step: "01",
-                icon: "🔍",
+                icon: (
+                  <div className="w-12 h-12 rounded-xl bg-brand-green/10 border border-brand-green/20 flex items-center justify-center mb-4">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1DB954" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                  </div>
+                ),
                 title: "Identify Real Problems",
                 desc: "We go to the ground. We talk to users, observe workflows, and map frictions that matter - not problems invented in a boardroom.",
               },
               {
                 step: "02",
-                icon: "🧪",
+                icon: (
+                  <div className="w-12 h-12 rounded-xl bg-brand-green/10 border border-brand-green/20 flex items-center justify-center mb-4">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1DB954" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 3H5v10l7 7 7-7V3h-4" /><path d="M9 3h6" /><path d="M9 12h6" />
+                    </svg>
+                  </div>
+                ),
                 title: "Validate Through Pilots",
                 desc: "Before scaling anything, we run lean pilot programs that test our assumptions. Real data, real users, real insights.",
               },
               {
                 step: "03",
-                icon: "🚀",
+                icon: (
+                  <div className="w-12 h-12 rounded-xl bg-brand-green/10 border border-brand-green/20 flex items-center justify-center mb-4">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1DB954" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                    </svg>
+                  </div>
+                ),
                 title: "Scale What Works",
                 desc: "Once a solution proves its value, we build it right - scalable architecture, clean UX, and infrastructure ready for growth.",
               },
@@ -318,7 +337,7 @@ export default function Home() {
                 <div className="absolute top-4 right-4 font-mono text-6xl font-black text-white/[0.03]">
                   {item.step}
                 </div>
-                <div className="text-4xl mb-4">{item.icon}</div>
+                {item.icon}
                 <div className="font-mono text-brand-green text-xs mb-2 tracking-widest uppercase">{item.step}</div>
                 <h3 className="font-display font-bold text-xl text-white mb-3">{item.title}</h3>
                 <p className="font-body text-white/55 text-sm leading-relaxed">{item.desc}</p>
@@ -346,19 +365,37 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {[
                 {
-                  icon: "🏟️",
+                  icon: (
+                    <div className="w-12 h-12 rounded-xl bg-brand-green/10 border border-brand-green/20 flex items-center justify-center mb-5">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1DB954" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" />
+                      </svg>
+                    </div>
+                  ),
                   title: "Sports Booking Inefficiency",
                   desc: "Thousands of turf slots go unfilled every day because booking still relies on phone calls. QuickTurf fixes this with real-time digital availability.",
                   metric: "Hours saved per week per turf owner",
                 },
                 {
-                  icon: "🌱",
+                  icon: (
+                    <div className="w-12 h-12 rounded-xl bg-brand-green/10 border border-brand-green/20 flex items-center justify-center mb-5">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1DB954" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" /><path d="M12 6v6l4 2" /><path d="M12 2v2M12 20v2M2 12h2M20 12h2" />
+                      </svg>
+                    </div>
+                  ),
                   title: "Last-Mile Mobility Gaps",
                   desc: "Short distances on campuses are either walked or ridden in polluting vehicles. STC provides a clean, convenient alternative.",
                   metric: "Zero-emission rides enabled",
                 },
                 {
-                  icon: "📈",
+                  icon: (
+                    <div className="w-12 h-12 rounded-xl bg-brand-green/10 border border-brand-green/20 flex items-center justify-center mb-5">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1DB954" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" />
+                      </svg>
+                    </div>
+                  ),
                   title: "Scalable Digital Infrastructure",
                   desc: "Both products are architected for scale - ready to grow across cities, institutions, and markets without compromising reliability.",
                   metric: "Built for the next 10x",
@@ -369,7 +406,7 @@ export default function Home() {
                   className="glass rounded-2xl p-8 border border-brand-border card-hover"
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
-                  <div className="text-4xl mb-5">{item.icon}</div>
+                  {item.icon}
                   <h3 className="font-display font-bold text-xl text-white mb-3">{item.title}</h3>
                   <p className="font-body text-white/55 text-sm leading-relaxed mb-6">{item.desc}</p>
                   <div className="border-t border-brand-border pt-4">
@@ -382,26 +419,88 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PARTNERS / MEDIA */}
-      {partnerMedia.length > 0 && (
-        <section className="section-padding max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="w-8 h-px bg-brand-green" />
-              <span className="font-mono text-brand-green text-xs tracking-widest uppercase">Partners & Ecosystem</span>
-              <div className="w-8 h-px bg-brand-green" />
+      {/* PARTNERS & EARLY SUPPORTERS */}
+      <section className="section-padding bg-brand-dark border-y border-brand-border" ref={partnersRef}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+
+          {/* Section header — matches screenshot style */}
+          <div className={`text-center mb-14 transition-all duration-700 ${partnersVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            <div className="flex items-center justify-center gap-4">
+              <div className="flex-1 max-w-[120px] h-px bg-gradient-to-r from-transparent to-brand-green/60" />
+              <span className="font-mono text-brand-green text-xs tracking-[0.25em] uppercase font-semibold whitespace-nowrap">
+                Partners &amp; Early Supporters
+              </span>
+              <div className="flex-1 max-w-[120px] h-px bg-gradient-to-l from-transparent to-brand-green/60" />
             </div>
-            <h2 className="font-display font-black text-3xl text-white">Trusted by partners</h2>
+                   {/* Logo cards grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 max-w-5xl mx-auto items-center">
+
+            {/* Partner 1: CSE(DS) */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={partnersVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="flex justify-center"
+            >
+              <Tilt
+                tiltMaxAngleX={10}
+                tiltMaxAngleY={10}
+                scale={1.1}
+                transitionSpeed={2500}
+              >
+                <div className="group relative flex items-center justify-center p-8">
+                  {/* Localized Glow Behind Logo on Hover */}
+                  <div className="absolute inset-0 bg-brand-green/25 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+                  <motion.img
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 150, damping: 12 }}
+                    src={cseDsLogoSrc}
+                    alt="CSE Data Science Department"
+                    className="relative max-h-[220px] max-w-full object-contain grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 group-hover:drop-shadow-[0_0_45px_rgba(29,185,84,0.5)] transition-all duration-700 ease-in-out"
+                  />
+                </div>
+              </Tilt>
+            </motion.div>
+
+            {/* Partner 2: AIC-SKU */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={partnersVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="flex justify-center"
+            >
+              <Tilt
+                tiltMaxAngleX={10}
+                tiltMaxAngleY={10}
+                scale={1.1}
+                transitionSpeed={2500}
+              >
+                <div className="group relative flex items-center justify-center p-8">
+                  {/* Localized Glow Behind Logo on Hover */}
+                  <div className="absolute inset-0 bg-brand-green/25 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+
+                  <motion.img
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 150, damping: 12 }}
+                    src={aicSkuLogoSrc}
+                    alt="AIC SKU – Startup & Scaleup"
+                    className="relative max-h-[220px] max-w-full object-contain grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 group-hover:drop-shadow-[0_0_45px_rgba(29,185,84,0.5)] transition-all duration-700 ease-in-out"
+                  />
+                </div>
+              </Tilt>
+            </motion.div>     </div>
+
+
           </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            {partnerMedia.map((m) => (
-              <div key={m._id} className="glass rounded-2xl p-4 border border-brand-border flex items-center justify-center w-36 h-24 card-hover">
-                <img src={m.imageUrl} alt={m.label || "Partner"} className="max-h-16 max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity" />
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+
+          {/* Sub-label */}
+          <p className={`text-center font-mono text-white/20 text-xs tracking-widest mt-10 transition-all duration-700 delay-300 ${partnersVisible ? "opacity-100" : "opacity-0"}`}>
+            Backed by institutions that believe in impact-first technology.
+          </p>
+
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="section-padding" ref={ctaRef}>
