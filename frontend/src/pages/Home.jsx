@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { Reveal, TextReveal } from "../components/Reveal";
 import Tilt from "react-parallax-tilt";
 import quickturfLogoSrc from "../assets/logos/quickturf.svg";
-import stcLogoSrc from "../assets/logos/stc-logo.svg";
+import stcLogoSrc from "../assets/logos/stc.svg";
 import cseDsLogoSrc from "../assets/logos/cse-ds.svg";
 import aicSkuLogoSrc from "../assets/logos/aic-sku.svg";
 
