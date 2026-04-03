@@ -510,11 +510,16 @@ export default function Home() {
       </section>
 
       {/* GALLERY SECTION */}
-      <section className="bg-black pt-32 pb-24 overflow-hidden" ref={galleryRef}>
+      <section className="bg-brand-charcoal border-y border-brand-border section-padding overflow-hidden" ref={galleryRef}>
         <div className={`transition-all duration-1000 ${galleryVisible ? "opacity-100" : "opacity-0"}`}>
           <div className="max-w-7xl mx-auto px-4 mb-20 text-center">
-            <h2 className="font-display font-black text-[120px] sm:text-[180px] md:text-[220px] text-white tracking-tighter uppercase leading-[0.7]">
-              Gallery
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-px bg-brand-green" />
+              <span className="font-mono text-brand-green text-xs tracking-widest uppercase">Momentum</span>
+              <div className="w-8 h-px bg-brand-green" />
+            </div>
+            <h2 className="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight leading-[1.1] text-white">
+              Solving <span className="text-gradient">in motion</span>
             </h2>
           </div>
 
