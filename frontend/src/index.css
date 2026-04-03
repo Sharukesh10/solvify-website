@@ -224,3 +224,20 @@
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+/* Infinite Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-container {
+  display: flex;
+  width: max-content;
+  animation: marquee 50s linear infinite;
+}
+
+.marquee-container:hover {
+  animation-play-state: paused;
+}
+

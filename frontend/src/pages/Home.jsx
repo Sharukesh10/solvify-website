@@ -439,64 +439,64 @@ export default function Home() {
               </span>
               <div className="flex-1 max-w-[120px] h-px bg-gradient-to-l from-transparent to-brand-green/60" />
             </div>
-                   {/* Logo cards grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 max-w-5xl mx-auto items-center">
+            {/* Logo cards grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 max-w-5xl mx-auto items-center">
 
-            {/* Partner 1: CSE(DS) */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={partnersVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="flex justify-center"
-            >
-              <Tilt
-                tiltMaxAngleX={10}
-                tiltMaxAngleY={10}
-                scale={1.1}
-                transitionSpeed={2500}
+              {/* Partner 1: CSE(DS) */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={partnersVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="flex justify-center"
               >
-                <div className="group relative flex items-center justify-center p-8">
-                  {/* Localized Glow Behind Logo on Hover */}
-                  <div className="absolute inset-0 bg-brand-green/25 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                <Tilt
+                  tiltMaxAngleX={10}
+                  tiltMaxAngleY={10}
+                  scale={1.1}
+                  transitionSpeed={2500}
+                >
+                  <div className="group relative flex items-center justify-center p-8">
+                    {/* Localized Glow Behind Logo on Hover */}
+                    <div className="absolute inset-0 bg-brand-green/25 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                  <motion.img
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 150, damping: 12 }}
-                    src={cseDsLogoSrc}
-                    alt="CSE Data Science Department"
-                    className="relative max-h-[220px] max-w-full object-contain grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 group-hover:drop-shadow-[0_0_45px_rgba(29,185,84,0.5)] transition-all duration-700 ease-in-out"
-                  />
-                </div>
-              </Tilt>
-            </motion.div>
+                    <motion.img
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 150, damping: 12 }}
+                      src={cseDsLogoSrc}
+                      alt="CSE Data Science Department"
+                      className="relative max-h-[220px] max-w-full object-contain grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 group-hover:drop-shadow-[0_0_45px_rgba(29,185,84,0.5)] transition-all duration-700 ease-in-out"
+                    />
+                  </div>
+                </Tilt>
+              </motion.div>
 
-            {/* Partner 2: AIC-SKU */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={partnersVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="flex justify-center"
-            >
-              <Tilt
-                tiltMaxAngleX={10}
-                tiltMaxAngleY={10}
-                scale={1.1}
-                transitionSpeed={2500}
+              {/* Partner 2: AIC-SKU */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={partnersVisible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="flex justify-center"
               >
-                <div className="group relative flex items-center justify-center p-8">
-                  {/* Localized Glow Behind Logo on Hover */}
-                  <div className="absolute inset-0 bg-brand-green/25 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                <Tilt
+                  tiltMaxAngleX={10}
+                  tiltMaxAngleY={10}
+                  scale={1.1}
+                  transitionSpeed={2500}
+                >
+                  <div className="group relative flex items-center justify-center p-8">
+                    {/* Localized Glow Behind Logo on Hover */}
+                    <div className="absolute inset-0 bg-brand-green/25 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                  <motion.img
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 150, damping: 12 }}
-                    src={aicSkuLogoSrc}
-                    alt="AIC SKU – Startup & Scaleup"
-                    className="relative max-h-[220px] max-w-full object-contain grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 group-hover:drop-shadow-[0_0_45px_rgba(29,185,84,0.5)] transition-all duration-700 ease-in-out"
-                  />
-                </div>
-              </Tilt>
-            </motion.div>     </div>
+                    <motion.img
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 150, damping: 12 }}
+                      src={aicSkuLogoSrc}
+                      alt="AIC SKU – Startup & Scaleup"
+                      className="relative max-h-[220px] max-w-full object-contain grayscale group-hover:grayscale-0 opacity-60 group-hover:opacity-100 group-hover:drop-shadow-[0_0_45px_rgba(29,185,84,0.5)] transition-all duration-700 ease-in-out"
+                    />
+                  </div>
+                </Tilt>
+              </motion.div>     </div>
 
 
           </div>
@@ -515,37 +515,29 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 mb-20 text-center">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-8 h-px bg-brand-green" />
-              <span className="font-mono text-brand-green text-xs tracking-widest uppercase">Momentum</span>
+              <span className="font-mono text-brand-green text-xs tracking-widest uppercase">Gallery</span>
               <div className="w-8 h-px bg-brand-green" />
             </div>
             <h2 className="font-display font-black text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] tracking-tight leading-[1.1] text-white">
-              Solving <span className="text-gradient">in motion</span>
+              Moments <span className="text-gradient">that matter</span>
             </h2>
           </div>
 
           <div className="relative bg-brand-charcoal/30 py-16">
-            <div className="flex overflow-x-hidden group">
-              <motion.div
-                className="flex whitespace-nowrap"
-                animate={{ x: ["0%", "-50%"] }}
-                transition={{
-                  duration: 60,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              >
+            <div className="flex overflow-x-hidden">
+              <div className="marquee-container">
                 {GALLERY_IMAGES.map((img, i) => (
-                  <div key={i} className="mx-6 flex-none w-[300px] sm:w-[500px] aspect-[4/3] rounded-3xl overflow-hidden glass border border-white/5 shadow-2xl">
+                  <div key={i} className="mx-6 flex-none w-[300px] sm:w-[500px] aspect-[4/3] rounded-3xl overflow-hidden glass border border-white/5 shadow-2xl transition-transform hover:scale-[1.02] cursor-pointer">
                     <img src={img} alt={`Gallery ${i}`} className="w-full h-full object-cover" />
                   </div>
                 ))}
                 {/* Duplicate for seamless effect */}
                 {GALLERY_IMAGES.map((img, i) => (
-                  <div key={`dup-${i}`} className="mx-6 flex-none w-[300px] sm:w-[500px] aspect-[4/3] rounded-3xl overflow-hidden glass border border-white/5 shadow-2xl">
+                  <div key={`dup-${i}`} className="mx-6 flex-none w-[300px] sm:w-[500px] aspect-[4/3] rounded-3xl overflow-hidden glass border border-white/5 shadow-2xl transition-transform hover:scale-[1.02] cursor-pointer">
                     <img src={img} alt={`Gallery ${i} Dup`} className="w-full h-full object-cover" />
                   </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
