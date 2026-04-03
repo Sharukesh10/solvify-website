@@ -49,6 +49,7 @@ export default function Home() {
   const [impactRef, impactVisible] = useReveal(0.15);
   const [partnersRef, partnersVisible] = useReveal(0.15);
   const [ctaRef, ctaVisible] = useReveal(0.2);
+  const [galleryRef, galleryVisible] = useReveal(0.15);
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState(null);
 
@@ -499,6 +500,47 @@ export default function Home() {
             Backed by institutions that believe in impact-first technology.
           </p>
 
+        </div>
+      </section>
+
+      {/* GALLERY SECTION */}
+      <section className="bg-black pt-32 pb-24 overflow-hidden" ref={galleryRef}>
+        <div className={`transition-all duration-1000 ${galleryVisible ? "opacity-100" : "opacity-0"}`}>
+          <div className="max-w-7xl mx-auto px-4 mb-20 text-center">
+            <h2 className="font-display font-black text-[120px] sm:text-[180px] md:text-[220px] text-white tracking-tighter uppercase leading-[0.7]">
+              Gallery
+            </h2>
+          </div>
+
+          <div className="relative bg-brand-charcoal/30 py-16">
+            <div className="flex overflow-x-hidden group">
+              <motion.div
+                className="flex whitespace-nowrap"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{
+                  duration: 60,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              >
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="mx-6 flex-none w-[300px] sm:w-[500px] aspect-[4/3] rounded-3xl overflow-hidden glass border border-white/5 shadow-2xl">
+                    <div className="w-full h-full bg-brand-dark/50 flex items-center justify-center text-white/5 font-mono text-sm">
+                      GALLERY_IMG_{i}
+                    </div>
+                  </div>
+                ))}
+                {/* Duplicate for seamless effect */}
+                {[1, 2, 3].map((i) => (
+                  <div key={`dup-${i}`} className="mx-6 flex-none w-[300px] sm:w-[500px] aspect-[4/3] rounded-3xl overflow-hidden glass border border-white/5 shadow-2xl">
+                    <div className="w-full h-full bg-brand-dark/50 flex items-center justify-center text-white/5 font-mono text-sm">
+                      GALLERY_IMG_{i}
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
