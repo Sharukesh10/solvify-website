@@ -1,36 +1,43 @@
 import { motion } from "framer-motion";
 import { Reveal } from "../components/Reveal";
 
+// Import real team images
+import sharukeshImg from "../assets/team/sharukesh.jpg";
+import tharakeshImg from "../assets/team/tharakesh.png";
+import shahidImg from "../assets/team/shahid.png";
+import shamanthImg from "../assets/team/shamanth.jpg";
+import sharathImg from "../assets/team/sharath.png";
+
 const TEAM = [
   {
     name: "N. Sharukesh",
     role: "Founder & CEO",
     desc: "Visionary leader driving Solvify's mission to solve real-world problems through intelligent digital products.",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sharukesh"
+    image: sharukeshImg
   },
   {
     name: "K. Tharakesh",
     role: "Co-Founder & Product Manager",
     desc: "Product strategist focused on user-centric design and building scalable solutions for sports and mobility.",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Tharakesh"
+    image: tharakeshImg
   },
   {
     name: "S. MD. Shahid Afrid",
     role: "CTO",
     desc: "Technology architect leading the engineering team to build robust, high-performance digital infrastructure.",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Shahid"
+    image: shahidImg
   },
   {
     name: "V. Shamanth Chowdary",
     role: "CFO",
     desc: "Financial strategist managing Solvify's growth, investments, and sustainable business operations.",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Shamanth"
+    image: shamanthImg
   },
   {
     name: "M. Sharath Chandra",
     role: "CMO",
     desc: "Brand architect crafting Solvify's narrative and driving adoption through innovative marketing strategies.",
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sharath"
+    image: sharathImg
   }
 ];
 
