@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Join from "./pages/Join";
 import Admin from "./pages/Admin";
 import Products from "./pages/Products";
+import Team from "./pages/Team";
 import ScrollToTop from "./components/ScrollToTop";
 import CustomCursor from "./components/CustomCursor";
 import PageTransition from "./components/PageTransition";
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/" element={<PageTransition><Home /></PageTransition>} />
           <Route path="/join" element={<PageTransition><Join /></PageTransition>} />
           <Route path="/products" element={<PageTransition><Products /></PageTransition>} />
+          <Route path="/team" element={<PageTransition><Team /></PageTransition>} />
           <Route path="/admin" element={<PageTransition><Admin /></PageTransition>} />
         </Routes>
       </AnimatePresence>
