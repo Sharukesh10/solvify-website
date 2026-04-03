@@ -13,13 +13,24 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 const allowedOrigins = [
   "http://localhost:5173",
-  process.env.FRONTEND_URL || "https://solvify-website.vercel.app",
+  "http://localhost:3000",
+  "https://solvify-website.vercel.app",
 ];
+
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.some((o) => origin.startsWith(o))) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    
+    const isAllowed = allowedOrigins.some((o) => origin.startsWith(o)) || 
+                     origin.endsWith(".vercel.app") || 
+                     origin.endsWith(".onrender.com") ||
+                     (process.env.FRONTEND_URL && origin === process.env.FRONTEND_URL);
+                     
+    if (isAllowed) {
       callback(null, true);
     } else {
+      console.error(`CORS Error: Origin ${origin} not allowed`);
       callback(new Error("Not allowed by CORS"));
     }
   },

@@ -2,12 +2,13 @@ import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 
-const ROLES = ["Player", "Turf Owner", "Investor", "Collaborator"];
+const ROLES = ["Player", "Turf Owner", "Investor", "Collaborator", "Student"];
 const ROLE_CARDS = [
   { role: "Player", desc: "Book turfs, give feedback, shape QuickTurf." },
   { role: "Turf Owner", desc: "List your turf, fill every slot, grow digitally." },
   { role: "Investor", desc: "Back products solving real Indian problems." },
   { role: "Collaborator", desc: "Build, research, pilot — partner with us." },
+  { role: "Student", desc: "Bring shared e-cycles (STC) to your campus." },
 ];
 
 const InputField = memo(function InputField({ label, name, type = "text", placeholder, inputMode, value, onChange, error }) {
@@ -79,7 +80,9 @@ export default function Join() {
       setServerMsg(res.data.message);
       setStatus("success");
     } catch (err) {
-      setServerMsg(err.response?.data?.message || "Something went wrong. Please try again.");
+      console.error("Submission error:", err);
+      const msg = err.response?.data?.message || err.message || "Something went wrong. Please try again.";
+      setServerMsg(msg);
       setStatus("error");
     }
   };

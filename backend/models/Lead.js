@@ -9,7 +9,7 @@ const leadSchema = new mongoose.Schema(
     role: {
       type: String,
       required: true,
-      enum: ["Player", "Turf Owner", "Investor", "Collaborator"],
+      enum: ["Player", "Turf Owner", "Investor", "Collaborator", "Student"],
     },
     turfName: { type: String, trim: true },
     location: { type: String, trim: true },
