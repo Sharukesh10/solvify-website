@@ -37,10 +37,11 @@ export default function Admin() {
   const fetchLeads = async () => {
     setLoading(true);
     try {
+      const apiBase = import.meta.env.VITE_API_URL || "";
       const params = {};
       if (filter.role) params.role = filter.role;
       if (filter.city) params.city = filter.city;
-      const res = await axios.get("/api/leads", { params });
+      const res = await axios.get(`${apiBase}/api/leads`, { params });
       setLeads(res.data.leads || []);
       setLeadsTotal(res.data.total || 0);
     } catch {
@@ -51,20 +52,23 @@ export default function Admin() {
 
   const fetchMedia = async () => {
     try {
-      const res = await axios.get("/api/media");
+      const apiBase = import.meta.env.VITE_API_URL || "";
+      const res = await axios.get(`${apiBase}/api/media`);
       setMedia(res.data.data || []);
     } catch { setMedia([]); }
   };
 
   const deleteLead = async (id) => {
     if (!window.confirm("Delete this lead?")) return;
-    await axios.delete(`/api/leads/${id}`);
+    const apiBase = import.meta.env.VITE_API_URL || "";
+    await axios.delete(`${apiBase}/api/leads/${id}`);
     fetchLeads();
   };
 
   const deleteMedia = async (id) => {
     if (!window.confirm("Delete this media?")) return;
-    await axios.delete(`/api/media/${id}`);
+    const apiBase = import.meta.env.VITE_API_URL || "";
+    await axios.delete(`${apiBase}/api/media/${id}`);
     fetchMedia();
   };
 
@@ -76,7 +80,8 @@ export default function Admin() {
     fd.append("type", uploadType);
     fd.append("label", uploadLabel);
     try {
-      await axios.post("/api/media/upload", fd, { headers: { "Content-Type": "multipart/form-data" } });
+      const apiBase = import.meta.env.VITE_API_URL || "";
+      await axios.post(`${apiBase}/api/media/upload`, fd, { headers: { "Content-Type": "multipart/form-data" } });
       setUploadMsg("✅ Uploaded successfully!");
       setUploadFile(null); setUploadLabel("");
       if (fileRef.current) fileRef.current.value = "";
@@ -92,6 +97,7 @@ export default function Admin() {
     "Turf Owner": "bg-blue-400/15 text-blue-400",
     Investor: "bg-yellow-400/15 text-yellow-400",
     Collaborator: "bg-purple-400/15 text-purple-400",
+    Student: "bg-orange-400/15 text-orange-400",
   };
 
   if (!authed) return (
@@ -139,6 +145,7 @@ export default function Admin() {
             { label: "Players", val: leads.filter(l => l.role === "Player").length, color: "text-brand-green" },
             { label: "Turf Owners", val: leads.filter(l => l.role === "Turf Owner").length, color: "text-blue-400" },
             { label: "Investors", val: leads.filter(l => l.role === "Investor").length, color: "text-yellow-400" },
+            { label: "Students", val: leads.filter(l => l.role === "Student").length, color: "text-orange-400" },
           ].map((s) => (
             <div key={s.label} className="glass rounded-xl p-5 border border-brand-border">
               <div className={`font-display font-black text-3xl ${s.color} mb-1`}>{s.val}</div>
@@ -171,7 +178,7 @@ export default function Admin() {
                 className="bg-brand-card border border-brand-border rounded-lg px-3 py-2 text-white text-sm outline-none focus:border-brand-green"
               >
                 <option value="">All Roles</option>
-                {["Player", "Turf Owner", "Investor", "Collaborator"].map((r) => <option key={r}>{r}</option>)}
+                {["Player", "Turf Owner", "Investor", "Collaborator", "Student"].map((r) => <option key={r}>{r}</option>)}
               </select>
               <input
                 type="text"
