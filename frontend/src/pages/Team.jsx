@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Reveal } from "../components/Reveal";
 
 // Import real team images
@@ -105,7 +106,7 @@ export default function Team() {
             <p className="font-body text-white/50 text-lg mb-8 max-w-xl mx-auto">
               We're always looking for brilliant builders who want to create impact-first technology.
             </p>
-            <button className="btn-secondary">View Careers</button>
+            <Link to="/join" className="btn-primary inline-flex">Join Us →</Link>
           </div>
         </section>
 
