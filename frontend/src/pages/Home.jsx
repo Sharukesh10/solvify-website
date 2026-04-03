@@ -10,6 +10,12 @@ import quickturfLogoSrc from "../assets/logos/quickturf.svg";
 import stcLogoSrc from "../assets/logos/stc.svg";
 import cseDsLogoSrc from "../assets/logos/cse-ds.svg";
 import aicSkuLogoSrc from "../assets/logos/aic-sku.svg";
+import gallery1 from "../assets/gallery/gallery1.jpg";
+import gallery2 from "../assets/gallery/gallery2.jpg";
+import gallery3 from "../assets/gallery/gallery3.jpg";
+import gallery4 from "../assets/gallery/gallery4.jpg";
+
+const GALLERY_IMAGES = [gallery1, gallery2, gallery3, gallery4];
 
 // Intersection observer hook
 function useReveal(threshold = 0.15) {
@@ -523,19 +529,15 @@ export default function Home() {
                   ease: "linear"
                 }}
               >
-                {[1, 2, 3].map((i) => (
+                {GALLERY_IMAGES.map((img, i) => (
                   <div key={i} className="mx-6 flex-none w-[300px] sm:w-[500px] aspect-[4/3] rounded-3xl overflow-hidden glass border border-white/5 shadow-2xl">
-                    <div className="w-full h-full bg-brand-dark/50 flex items-center justify-center text-white/5 font-mono text-sm">
-                      GALLERY_IMG_{i}
-                    </div>
+                    <img src={img} alt={`Gallery ${i}`} className="w-full h-full object-cover" />
                   </div>
                 ))}
                 {/* Duplicate for seamless effect */}
-                {[1, 2, 3].map((i) => (
+                {GALLERY_IMAGES.map((img, i) => (
                   <div key={`dup-${i}`} className="mx-6 flex-none w-[300px] sm:w-[500px] aspect-[4/3] rounded-3xl overflow-hidden glass border border-white/5 shadow-2xl">
-                    <div className="w-full h-full bg-brand-dark/50 flex items-center justify-center text-white/5 font-mono text-sm">
-                      GALLERY_IMG_{i}
-                    </div>
+                    <img src={img} alt={`Gallery ${i} Dup`} className="w-full h-full object-cover" />
                   </div>
                 ))}
               </motion.div>
