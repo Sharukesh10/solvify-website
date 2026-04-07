@@ -247,7 +247,7 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-                <Link to="/products" className="btn-primary w-full sm:w-auto text-base py-3 px-8 inline-flex">
+                <Link to="/products#quickturf" className="btn-primary w-full sm:w-auto text-base py-3 px-8 inline-flex">
                   Explore Platform →
                 </Link>
               </div>
@@ -274,7 +274,7 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-                <Link to="/products" className="btn-secondary w-full sm:w-auto text-base py-3 px-8 inline-flex">
+                <Link to="/products#stc" className="btn-secondary w-full sm:w-auto text-base py-3 px-8 inline-flex">
                   Explore Platform →
                 </Link>
               </div>

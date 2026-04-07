@@ -18,7 +18,7 @@ const TEAM = [
   },
   {
     name: "K. Tharakesh",
-    role: "Co-Founder & Product Manager",
+    role: "Co-Founder & COO",
     desc: "Product strategist focused on user-centric design and building scalable solutions for sports and mobility.",
     image: tharakeshImg
   },
@@ -46,7 +46,7 @@ export default function Team() {
   return (
     <main className="bg-brand-dark min-h-screen pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        
+
         {/* Header */}
         <section className="text-center mb-20">
           <Reveal>
@@ -79,14 +79,14 @@ export default function Team() {
                 {/* Glow effect */}
                 <div className="absolute inset-0 bg-brand-green/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative w-32 h-32 rounded-2xl overflow-hidden border border-white/10 bg-brand-card">
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
+                  <img
+                    src={member.image}
+                    alt={member.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
-              
+
               <h3 className="font-display font-bold text-2xl text-white mb-2">{member.name}</h3>
               <div className="font-mono text-brand-green text-xs tracking-widest uppercase mb-4 px-3 py-1 bg-brand-green/10 rounded-full border border-brand-green/20">
                 {member.role}
